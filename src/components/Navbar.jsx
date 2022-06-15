@@ -22,7 +22,7 @@ const NavButton = ({title, handleClickButton, icon, color, dotColor}) => {
 }
 
 const Navbar = () => {
-    const {activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize} = useStateContext();
+    const {activeMenu, setActiveMenu, isClicked, handleClick, screenSize, setScreenSize, currentColor} = useStateContext();
 
     useEffect(() => {
         const handleResize = () => setScreenSize(window.innerWidth);
@@ -44,12 +44,12 @@ const Navbar = () => {
     return (
         <div className={"flex justify-between p-2 md:mx-6 relative"}>
             {/*top*/}
-            <NavButton handleClickButton={() => setActiveMenu(!activeMenu)} color={"blue"} title={"Menu"} icon={<AiOutlineMenu />} />
+            <NavButton handleClickButton={() => setActiveMenu(!activeMenu)} color={currentColor} title={"Menu"} icon={<AiOutlineMenu />} />
 
             <div className={"flex gap-1"}>
-                <NavButton handleClickButton={() => handleClick("cart")} color={"blue"} title={"Cart"} icon={<FiShoppingCart />} />
-                <NavButton handleClickButton={() => handleClick("chat")} dotColor={"#03C9D7"} color={"blue"} title={"Chat"} icon={<BsChatLeft />} />
-                <NavButton handleClickButton={() => handleClick("notifications")} dotColor={"#03C9D7"} color={"blue"} title={"Notifications"} icon={<RiNotification3Line />} />
+                <NavButton handleClickButton={() => handleClick("cart")} color={currentColor} title={"Cart"} icon={<FiShoppingCart />} />
+                <NavButton handleClickButton={() => handleClick("chat")} dotColor={"#03C9D7"} color={currentColor} title={"Chat"} icon={<BsChatLeft />} />
+                <NavButton handleClickButton={() => handleClick("notifications")} dotColor={"#03C9D7"} color={currentColor} title={"Notifications"} icon={<RiNotification3Line />} />
                 <TooltipComponent content={"Profile"} position={"BottomCenter"}>
                     <div className={"flex items-center gap-2 cursor-pointer"} onClick={() => console.log("profile")}>
                         <img className={"w-8 h-8 rounded-full "} src={avatar} alt={""} />

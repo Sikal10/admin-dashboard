@@ -7,6 +7,8 @@ import {useStateContext} from "../contexts/StateContext";
 
 const Ecommerce = () => {
 
+    const {currentColor} = useStateContext();
+
     return (
         <div className={""}>
             <div className={"flex flex-wrap lg:flex-nowrap justify-center"} >
@@ -20,7 +22,7 @@ const Ecommerce = () => {
                     </div>
 
                     <div className={"mt-6"}>
-                        <Button size={"md"} color={"white"} bgColor={"blue"} text={"Download"} borderRadius={"10px"} />
+                        <Button size={"md"} color={"white"} bgColor={currentColor} text={"Download"} borderRadius={"10px"} />
                     </div>
                 </div>
 
@@ -41,10 +43,9 @@ const Ecommerce = () => {
             </div>
 
             {/*revenue.. container*/}
-            <div className={"flex flex-wrap gap-10 justify-center border border-red-400 "}>
+            <div className={"flex flex-wrap gap-10 justify-center"}>
                 {/*left*/}
-
-                <div className={"border bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780"} >
+                <div className={"bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780"} >
                     <article className={"flex justify-between"}>
                         <p>Revenue Updates</p>
 
@@ -60,7 +61,7 @@ const Ecommerce = () => {
                         </div>
                     </article>
 
-                    <article className={"border border-amber-500 mt-10 "}>
+                    <article className={"mt-10 flex"}>
                         <div className={"border-r-1 border-color m-4 pr-10"}>
                             <div>
                                 <p>
@@ -88,19 +89,45 @@ const Ecommerce = () => {
                                     color={"blue"}
                                 />
                             </div>
+
+                            <div className={"mt-10"}>
+                                <Button color={"white"} bgColor={currentColor} text={"Download Report"} borderRadius={"10px"} />
+                            </div>
                         </div>
+
+                        <div style={{width: "320px", height: "295px"}} className={"bg-sky-100 rounded-2xl"}>
+                            Bar Chart
+                        </div>
+
                     </article>
-
-
                 </div>
 
                 {/*right*/}
+                <div>
+                    <div className={"rounded-2xl bg-blue-300 md:w-400 m-3 p-4"}>
+                        <div className={"flex justify-between items-center"}>
+                            <p className="font-semibold text-white text-2xl">Earnings</p>
 
-                <div className={"border border-blue-400"}>
+                            <div>
+                                <p className="text-2xl text-white font-semibold mt-8">$63,448.78</p>
+                                <p className={"text-gray-200"}>Monthly Revenue</p>
+                            </div>
+                        </div>
+                        <h2 className={"mt-6 font-semibold text-gray-600"}>Chart</h2>
+                    </div>
 
-                    {/*top*/}
+                    <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3">
+                        <div className={"flex items-center gap-10 justify-center"}>
+                            <div>
+                                <p>$43,246</p>
+                                <p>Yearly sales</p>
+                            </div>
 
-                    {/*bottom*/}
+                            <div className={"border grid place-items-center rounded-full w-36 h-36"}>
+                                Chart
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

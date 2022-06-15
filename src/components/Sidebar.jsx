@@ -6,7 +6,7 @@ import {links} from "../data/dummy";
 import {useStateContext} from "../contexts/StateContext";
 
 const Sidebar = () => {
-    const {activeMenu, setActiveMenu, screenSize} = useStateContext();
+    const {activeMenu, setActiveMenu, screenSize, currentColor} = useStateContext();
 
     const handleCloseSidebar = () => {
         if (activeMenu && screenSize <= 700) {
@@ -28,7 +28,9 @@ const Sidebar = () => {
                     </Link>
 
                     <TooltipComponent content={"Menu"} position={"BottomCenter"}>
-                        <button onClick={() => setActiveMenu(false)} className={"text-xl p-3 rounded-full hover:bg-light-gray mt-4 block md:hidden"}><MdOutlineCancel/></button>
+                        <button onClick={() => setActiveMenu(false)}
+                                className={"text-xl p-3 rounded-full hover:bg-light-gray mt-4 block md:hidden"}>
+                            <MdOutlineCancel/></button>
                     </TooltipComponent>
                 </div>
 
@@ -37,9 +39,11 @@ const Sidebar = () => {
                     {links.map((item, index) => <div key={index}>
                         <p className={"uppercase text-gray-400 m-3 mt-4"}>{item.title}</p>
                         {item.links.map((link) =>
-                            <NavLink key={link.name} to={`/${link.name}`}
-                                     onClick={handleCloseSidebar}
-                                     className={({isActive}) => isActive ? activeLink : normalLink}
+                            <NavLink
+                                style={({isActive}) => ({background: isActive ? currentColor : ""})}
+                                key={link.name} to={`/${link.name}`}
+                                onClick={handleCloseSidebar}
+                                className={({isActive}) => isActive ? activeLink : normalLink}
                             >
                                 {link.icon}
                                 <span>{link.name}</span>

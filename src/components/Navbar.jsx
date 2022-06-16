@@ -48,8 +48,8 @@ const Navbar = () => {
 
             <div className={"flex gap-1"}>
                 <NavButton handleClickButton={() => handleClick("cart")} color={currentColor} title={"Cart"} icon={<FiShoppingCart />} />
-                <NavButton handleClickButton={() => handleClick("chat")} dotColor={"#03C9D7"} color={currentColor} title={"Chat"} icon={<BsChatLeft />} />
-                <NavButton handleClickButton={() => handleClick("notifications")} dotColor={"#03C9D7"} color={currentColor} title={"Notifications"} icon={<RiNotification3Line />} />
+                <NavButton handleClickButton={() => handleClick("chat")} dotColor={currentColor} color={currentColor} title={"Chat"} icon={<BsChatLeft />} />
+                <NavButton handleClickButton={() => handleClick("notifications")} dotColor={currentColor} color={currentColor} title={"Notifications"} icon={<RiNotification3Line />} />
                 <TooltipComponent content={"Profile"} position={"BottomCenter"}>
                     <div className={"flex items-center gap-2 cursor-pointer"} onClick={() => console.log("profile")}>
                         <img className={"w-8 h-8 rounded-full "} src={avatar} alt={""} />

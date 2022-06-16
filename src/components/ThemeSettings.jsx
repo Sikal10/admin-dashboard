@@ -4,11 +4,11 @@ import {themeColors} from '../data/dummy';
 import {useStateContext} from "../contexts/StateContext";
 
 const ThemeSettings = () => {
-    const {setColor, setMode, currentMode, currentColor, setThemeSettings, themeSettings} = useStateContext();
+    const {setColor, currentColor, setThemeSettings, handleThemeMode} = useStateContext();
 
     return (
         <div className={"flex justify-end bg-half-transparent fixed w-screen top-0 right-0"}>
-            <div className={"h-screen dark:text-gray-200 bg-white dark:[#484B52 w-400"}>
+            <div className={"h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-400"}>
                 <div className={"flex items-center justify-between p-4 ml-4"}>
                     <p className="font-semibold text-xl">Settings</p>
                     <button
@@ -22,31 +22,12 @@ const ThemeSettings = () => {
 
                 <div className={"border-t-1 border-color p-4 ml-4"}>
                     <p className="font-semibold text-lg">Theme Options</p>
-                    
-                    <div className={"mt-4"}>
-                        <input 
-                            type="radio"
-                            id={"light"}
-                            name={"theme"}
-                            value={"Light"} 
-                            className={"cursor-pointer"}
-                            onChange={setMode}
-                            checked={currentMode === "Light"}
-                        />
-                        <label htmlFor="light" className={"ml-2 text-md cursor-pointer"}>Light</label>
+
+                    <div className={"space-x-3 mt-4"}>
+                        <button onClick={() => handleThemeMode("Light")} className={"w-8 h-8 bg-light-gray rounded-md"}/>
+                        <button onClick={() => handleThemeMode("Dark")} className={"w-8 h-8 bg-secondary-dark-bg rounded-md "}/>
                     </div>
-                    <div className={"mt-4"}>
-                        <input
-                            type="radio"
-                            id={"dark"}
-                            name={"theme"}
-                            value={"Dark"}
-                            className={"cursor-pointer"}
-                            onChange={setMode}
-                            checked={currentMode === "Dark"}
-                        />
-                        <label htmlFor="dark" className={"ml-2 text-md cursor-pointer"}>Dark</label>
-                    </div>
+
                 </div>
 
                 <div className={"border-t-1 border-color p-4 ml-4"}>
